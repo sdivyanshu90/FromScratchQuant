@@ -1,0 +1,44 @@
+# Byte-compiled / caches
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Tooling caches
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
+.benchmarks/
+.coverage
+.coverage.*
+htmlcov/
+
+# Build / packaging
+build/
+dist/
+*.egg-info/
+*.egg
+
+# Virtual environments
+.venv/
+venv/
+env/
+.env
+.env.*
+.python-version
+
+# Saved quantized checkpoints produced by examples
+*.safetensors
+*.qconfig.json
+*.pt
+*.pth
+
+# Notebook noise
+.ipynb_checkpoints/
+
+# Editor / OS noise
+.vscode/
+.idea/
+.DS_Store
+
+# Local scratch (not part of the project)
+COMMIT_GUIDE.md
