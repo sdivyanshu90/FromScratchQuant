@@ -1,0 +1,43 @@
+[build-system]
+requires = ["setuptools>=64", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "quantlib"
+version = "0.1.0"
+description = "Self-contained quantization library (INT8 / FP4 / NF4) with zero quantization-framework dependencies."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "quantlib contributors" }]
+keywords = ["quantization", "int8", "fp4", "nf4", "qlora", "pytorch"]
+dependencies = [
+    "torch>=2.0.0",
+    "numpy",
+    "safetensors>=0.3.0",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=7.0", "mypy", "pytest-benchmark"]
+
+[tool.setuptools.packages.find]
+include = ["quantlib*"]
+exclude = ["tests*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+addopts = "-q"
+
+[tool.mypy]
+python_version = "3.10"
+strict = true
+ignore_missing_imports = true
+warn_return_any = false
+files = ["quantlib"]
+
+# safetensors ships no type stubs; silence missing-import noise for it while
+# still letting torch's real (py.typed) stubs load so nn.Module is a real class.
+[[tool.mypy.overrides]]
+module = ["safetensors.*"]
+ignore_missing_imports = true
